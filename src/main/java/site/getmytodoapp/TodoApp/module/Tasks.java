@@ -26,4 +26,10 @@ public class Tasks {
         this.tasks = tasks;
         this.isCompleted = false;
     }
+
+    public Tasks(int id,String tasks) {
+        this.id = id;
+        this.tasks = tasks;
+        this.isCompleted = false;
+    }
 }
