@@ -33,5 +33,12 @@ public class TaskService {
         throw new TaskNotFoundException("No Task Found!");
     }
 
+    public List<Tasks> viewTasks() {
+        List<Tasks> availableTasks = tasksRepository.findAll();
+        if (!availableTasks.isEmpty()) {
+            return availableTasks;
+        }
+        return null;
+    }
 
 }
