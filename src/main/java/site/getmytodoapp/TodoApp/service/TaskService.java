@@ -41,4 +41,12 @@ public class TaskService {
         return null;
     }
 
+    public List<Tasks> searchTasks(String keyword) {
+        List<Tasks> availableTasks = tasksRepository.findByTasksContaining(keyword);
+        if (!availableTasks.isEmpty()) {
+            return availableTasks;
+        }
+        return null;
+    }
+
 }
