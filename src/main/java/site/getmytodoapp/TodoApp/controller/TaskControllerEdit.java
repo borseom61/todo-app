@@ -25,4 +25,13 @@ public class TaskControllerEdit {
         return new ResponseEntity<>("Task Added at "+latestTime, HttpStatus.OK);
     }
 
+    @PutMapping("/edit")
+    public ResponseEntity<String> updateTask(Tasks task) {
+        if (service.updateTask(task)) {
+            LocalDateTime latestTime = LocalDateTime.now();
+            return new ResponseEntity<>("Task Updated at "+latestTime, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Task Not Updated!",HttpStatus.BAD_REQUEST);
+    }
+
 }
