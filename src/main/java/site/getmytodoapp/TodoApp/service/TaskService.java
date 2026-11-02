@@ -15,4 +15,14 @@ public class TaskService {
     public void addTaskInList(Tasks task) {
         tasksRepository.save(task);
     }
+
+//    public boolean updateTask(Tasks task) {
+//        if (tasksRepository.existsById(task.getId())) {
+//            tasksRepository.save(task);
+//            return true;
+//        }
+//        throw new TaskNotFoundException("No Task Found!");
+//    }
+
+
 }
