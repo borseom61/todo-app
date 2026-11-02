@@ -25,5 +25,13 @@ public class TaskService {
         throw new TaskNotFoundException("No Task Found!");
     }
 
+    public boolean deleteTask(int task_id) {
+        if (tasksRepository.existsById(task_id)) {
+            tasksRepository.deleteById(task_id);
+            return true;
+        }
+        throw new TaskNotFoundException("No Task Found!");
+    }
+
 
 }
