@@ -15,4 +15,14 @@ import java.util.List;
 @RequestMapping("/api/todo/view")
 public class TaskControllerView {
     private final TaskService service;
+
+    @GetMapping()
+    public ResponseEntity<List<Tasks>> viewAllTasks() {
+        List<Tasks> viewTask = service.viewTasks();
+        if (viewTask!=null) {
+            return new ResponseEntity<>(viewTask, HttpStatus.OK);
+        }
+        throw new TaskNotFoundException("List is Empty");
+    }
+
 }
