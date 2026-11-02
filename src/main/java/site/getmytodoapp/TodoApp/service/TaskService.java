@@ -6,6 +6,7 @@ import site.getmytodoapp.TodoApp.globalException.TaskNotFoundException;
 import site.getmytodoapp.TodoApp.module.Tasks;
 import site.getmytodoapp.TodoApp.repository.TaskRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -54,9 +55,11 @@ public class TaskService {
         if (tasks!=null) {
             if (!tasks.isCompleted()) {
                 tasks.setCompleted(true);
+                tasks.setWhenCompleted(LocalDateTime.now());
                 return true;
             }
             tasks.setCompleted(false);
+            tasks.setWhenCompleted(null);
             return false;
         }
         throw new TaskNotFoundException("Task Not Found!");
