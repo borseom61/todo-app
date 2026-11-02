@@ -34,7 +34,7 @@ public class TaskControllerView {
         throw new TaskNotFoundException("List is Empty");
     }
 
-    @PutMapping("/isComplete?")
+    @PutMapping("/isComplete")
     public ResponseEntity<String> markAsCompleteOrUnComplete(@RequestParam int id) {
         if (service.markasCompletedOrUnCompleted(id)) {
             return new ResponseEntity<>("Mark As Completed",HttpStatus.OK);

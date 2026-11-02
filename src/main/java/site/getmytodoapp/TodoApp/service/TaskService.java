@@ -55,10 +55,12 @@ public class TaskService {
             if (!tasks.isCompleted()) {
                 tasks.setCompleted(true);
                 tasks.setWhenCompleted(LocalDateTime.now());
+                tasksRepository.save(tasks);
                 return true;
             }
             tasks.setCompleted(false);
             tasks.setWhenCompleted(null);
+            tasksRepository.save(tasks);
             return false;
         }
         throw new TaskNotFoundException("Task Not Found!");
