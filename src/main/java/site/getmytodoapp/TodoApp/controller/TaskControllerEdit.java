@@ -1,5 +1,6 @@
 package site.getmytodoapp.TodoApp.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +17,14 @@ public class TaskControllerEdit {
     private final TaskService service;
 
     @PostMapping("/")
-    public ResponseEntity<String> addTask(Tasks task) {
+    public ResponseEntity<String> addTask(@RequestBody @Valid Tasks task) {
         service.addTaskInList(task);
         LocalDateTime latestTime = LocalDateTime.now();
         return new ResponseEntity<>("Task Added at "+latestTime, HttpStatus.OK);
     }
 
     @PutMapping("/edit")
-    public ResponseEntity<String> updateTask(Tasks task) {
+    public ResponseEntity<String> updateTask(@RequestBody @Valid Tasks task) {
         if (service.updateTask(task)) {
             LocalDateTime latestTime = LocalDateTime.now();
             return new ResponseEntity<>("Task Updated at "+latestTime, HttpStatus.OK);
