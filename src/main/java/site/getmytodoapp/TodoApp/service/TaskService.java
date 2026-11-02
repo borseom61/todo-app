@@ -57,7 +57,7 @@ public class TaskService {
                 return true;
             }
             tasks.setCompleted(false);
-            return true;
+            return false;
         }
         throw new TaskNotFoundException("Task Not Found!");
     }
