@@ -25,4 +25,13 @@ public class TaskControllerView {
         throw new TaskNotFoundException("List is Empty");
     }
 
+    @GetMapping("/{keyword}")
+    public ResponseEntity<List<Tasks>> viewSearchedTasks(@PathVariable String keyword) {
+        List<Tasks> viewTask = service.searchTasks(keyword);
+        if (viewTask!=null) {
+            return new ResponseEntity<>(viewTask, HttpStatus.OK);
+        }
+        throw new TaskNotFoundException("List is Empty");
+    }
+
 }
