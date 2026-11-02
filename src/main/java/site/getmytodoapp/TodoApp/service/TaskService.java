@@ -49,4 +49,17 @@ public class TaskService {
         return null;
     }
 
+    public boolean markasCompletedOrUnCompleted(int task_id) {
+        Tasks tasks = tasksRepository.findById(task_id).orElse(null);
+        if (tasks!=null) {
+            if (!tasks.isCompleted()) {
+                tasks.setCompleted(true);
+                return true;
+            }
+            tasks.setCompleted(false);
+            return true;
+        }
+        throw new TaskNotFoundException("Task Not Found!");
+    }
+
 }
