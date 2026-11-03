@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/todo/edit")
+@CrossOrigin("*")
 public class TaskControllerEdit {
     private final TaskService service;
 

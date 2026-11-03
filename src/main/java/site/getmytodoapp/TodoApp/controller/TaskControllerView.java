@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/todo/view")
+@CrossOrigin("*")
 public class TaskControllerView {
     private final TaskService service;
 
