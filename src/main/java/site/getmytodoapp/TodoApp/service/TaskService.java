@@ -7,6 +7,7 @@ import site.getmytodoapp.TodoApp.module.Tasks;
 import site.getmytodoapp.TodoApp.repository.TaskRepository;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Service
 @RequiredArgsConstructor
@@ -17,16 +18,26 @@ public class TaskService {
         tasksRepository.save(task);
     }
 
-    public boolean updateTask(Tasks task) {
-        if (tasksRepository.existsById(task.getId())) {
+//    public boolean updateTask(Tasks task) {
+//        if (tasksRepository.existsById(task.getId())) {
+//            tasksRepository.save(task);
+//            return true;
+//        }
+//        throw new TaskNotFoundException("No Task Found!");
+//    }
+
+    public boolean updateTaskInPredicates(Tasks task) {
+        Predicate<Tasks> predicate = x -> tasksRepository.existsById(x.getId());
+        if (predicate.test(task)) {
             tasksRepository.save(task);
             return true;
         }
-        throw new TaskNotFoundException("No Task Found!");
+        return false;
     }
 
     public boolean deleteTask(int task_id) {
-        if (tasksRepository.existsById(task_id)) {
+        Predicate<Integer> predicate = id -> tasksRepository.existsById(id);
+        if (predicate.test(task_id)) {
             tasksRepository.deleteById(task_id);
             return true;
         }

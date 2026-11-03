@@ -25,7 +25,7 @@ public class TaskControllerEdit {
 
     @PutMapping("/edit")
     public ResponseEntity<String> updateTask(@RequestBody @Valid Tasks task) {
-        if (service.updateTask(task)) {
+        if (service.updateTaskInPredicates(task)) {
             LocalDateTime latestTime = LocalDateTime.now();
             return new ResponseEntity<>("Task Updated at "+latestTime, HttpStatus.OK);
         }
